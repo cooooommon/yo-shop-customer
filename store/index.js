@@ -1,12 +1,13 @@
 import { createStore } from 'vuex'
-import { app, user, theme } from './modules'
+import { app, user, theme, page } from './modules'
 import getters from './getters'
 
 const store = createStore({
   modules: {
     app,
     user,
-    theme
+    theme,
+    page
   },
   state: {
 

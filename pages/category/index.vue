@@ -14,11 +14,13 @@
     <secondary v-if="setting.style == PageCategoryStyleEnum.TWO_LEVEL.value" :list="list" />
 
     <!-- 分类+商品 -->
-    <commodity v-if="setting.style == PageCategoryStyleEnum.COMMODITY.value" ref="mescrollItem" :list="list" :setting="setting" />
+    <commodity v-if="setting.style == PageCategoryStyleEnum.COMMODITY.value" :list="list" :setting="setting" :query="query" />
+
   </view>
 </template>
 
 <script>
+  import store from '@/store'
   import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp'
   import { setCartTabBadge } from '@/core/app'
   import SettingKeyEnum from '@/common/enum/setting/Key'
@@ -50,7 +52,9 @@
         // 分类模板设置
         setting: {},
         // 正在加载中
-        isLoading: true
+        isLoading: true,
+        // query参数
+        query: { categoryId1: undefined, categoryId2: undefined }
       }
     },
 
@@ -66,6 +70,16 @@
      * 生命周期函数--监听页面显示
      */
     onShow() {
+
+      // 监听query参数
+      store.dispatch('OnceQueryParam')
+        .then(res => {
+          if (res !== null) {
+            this.query = res
+          }
+          // console.log('onShow',  this.query, res )
+        })
+
       // 每间隔5分钟自动刷新一次页面数据
       const curTime = new Date().getTime()
       if ((curTime - lastRefreshTime) > 5 * 60 * 1000) {
@@ -120,6 +134,7 @@
       initCategory(result) {
         this.list = result.data.list
       },
+
 
     },
 

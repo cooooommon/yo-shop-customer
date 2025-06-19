@@ -89,6 +89,11 @@
         type: Object,
         default: () => {}
       },
+      // query参数
+      query: {
+        type: Object,
+        default: () => {}
+      },
     },
     data() {
       return {
@@ -113,6 +118,18 @@
         }
       }
     },
+    watch: {
+      // 监听query参数
+      query: {
+        handler({ categoryId1, categoryId2 }) {
+          this.curIndex = this.findCateIndex(categoryId1)
+          this.curIndex2 = this.findCateIndex(categoryId2, this.curIndex)
+          this.showSubCate = false
+          this.onRefreshList()
+        },
+        immediate: true
+      }
+    },
     computed: {
       // 二级分类列表
       subCateList() {
@@ -123,6 +140,13 @@
       }
     },
     methods: {
+
+      // 根据分类ID查找指针
+      findCateIndex(cateId, pIndex = -1) {
+        if (!cateId) return -1
+        const data = pIndex > -1 ? this.list[pIndex].children : this.list
+        return data.findIndex(item => item.category_id == cateId)
+      },
 
       /**
        * 上拉加载的回调 (页面初始化时也会执行一次)
@@ -172,8 +196,8 @@
       // 一级分类：选中分类
       handleSelectNav(index) {
         this.curIndex = index
-        this.onRefreshList()
         this.showSubCate = false
+        this.onRefreshList()
         this.curIndex2 = -1
       },
 
@@ -235,7 +259,7 @@
     left: var(--window-left);
     bottom: var(--window-bottom);
     width: 173rpx;
-    height: calc(100% - var(--window-top) - var(--window-bottom) - 90rpx) !important; 
+    height: calc(100% - var(--window-top) - var(--window-bottom) - 90rpx) !important;
     background: #f8f8f8;
     color: #444;
   }

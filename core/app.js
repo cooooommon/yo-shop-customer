@@ -115,9 +115,8 @@ export const navTo = (url, query = {}, modo = 'navigateTo') => {
   }
   // tabBar页面, 使用switchTab
   if (util.inArray(url, getTabBarLinks())) {
-    uni.switchTab({
-      url: `/${url}`
-    })
+    store.dispatch('SetQueryParam', query)
+    uni.switchTab({ url: `/${url}` })
     return true
   }
   // 生成query参数
