@@ -1,8 +1,8 @@
 <template>
   <!-- 热区 -->
   <view class="diy-hotZone"
-    :style="{ paddingBottom: `${itemStyle.paddingTop * 2}rpx`, background: itemStyle.background }">
-    <view class="bg-image" :style="{ padding: `${itemStyle.paddingTop * 2}rpx ${itemStyle.paddingLeft * 2}rpx 0` }">
+    :style="{ padding: `${itemStyle.paddingTop * 2}rpx ${itemStyle.paddingLeft * 2}rpx`, background: itemStyle.background }">
+    <view class="bg-image" :style="{ borderRadius: `${itemStyle.borderRadius * 2}rpx` }">
       <image class="image" :src="data.imgUrl" mode="widthFix"></image>
     </view>
     <view class="zone-item" v-for="(item, index) in data.maps" :key="index"
@@ -44,12 +44,11 @@
 <style lang="scss" scoped>
   .diy-hotZone {
     position: relative;
-    width: 100%;
     overflow: hidden;
   }
 
   .bg-image {
-    width: 100%;
+    overflow: hidden;
     z-index: 1;
 
     .image {
@@ -61,6 +60,5 @@
   .zone-item {
     position: absolute;
     z-index: 2;
-    // background-color: red;
   }
 </style>
