@@ -143,6 +143,13 @@
 				type: Boolean,
 				default: true
 			},
+			// tab item的样式
+			itemStyle: {
+				type: Object,
+				default() {
+					return {}
+				}
+			},
 			// 当前活动tab item的样式
 			activeItemStyle: {
 				type: Object,
@@ -254,9 +261,10 @@
 					if (index == this.currentIndex) {
 						style.color = this.activeColor;
 						// 给选中的tab item添加外部自定义的样式
-						style = Object.assign(style, this.activeItemStyle);
+						style = Object.assign(style, this.itemStyle, this.activeItemStyle, { color: this.activeColor });
 					} else {
 						style.color = this.inactiveColor;
+						style = Object.assign(style, this.itemStyle);
 					}
 					return style;
 				}
