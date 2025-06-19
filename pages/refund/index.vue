@@ -119,7 +119,7 @@
         app.getRefundList(page.num)
           .then(list => {
             const curPageLen = list.data.length
-            const totalSize = list.data.total
+            const totalSize = list.total
             app.mescroll.endBySize(curPageLen, totalSize)
           })
           .catch(() => app.mescroll.endErr())
@@ -205,7 +205,18 @@
         // line-height: 1.3;
       }
 
-      .goods-props {        margin-top: 14rpx;        color: #ababab;        font-size: 24rpx;        overflow: hidden;        .goods-props-item {          padding: 4rpx 16rpx;          border-radius: 12rpx;          background-color: #fcfcfc;        }      }
+      .goods-props {
+        margin-top: 14rpx;
+        color: #ababab;
+        font-size: 24rpx;
+        overflow: hidden;
+
+        .goods-props-item {
+          padding: 4rpx 16rpx;
+          border-radius: 12rpx;
+          background-color: #fcfcfc;
+        }
+      }
 
     }
 

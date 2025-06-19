@@ -68,7 +68,7 @@
         app.getLogList(page.num)
           .then(list => {
             const curPageLen = list.data.length
-            const totalSize = list.data.total
+            const totalSize = list.total
             app.mescroll.endBySize(curPageLen, totalSize)
           })
           .catch(() => app.mescroll.endErr())
