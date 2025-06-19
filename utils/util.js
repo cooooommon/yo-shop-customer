@@ -227,3 +227,8 @@ export const rpx = () => {
 export const rpx2px = (num) => {
   return num * rpx()
 }
+
+// 字符串驼峰转中划线
+export const formatToLine = value => {
+  return value.replace(/([A-Z])/g, '-$1').toLowerCase()
+}

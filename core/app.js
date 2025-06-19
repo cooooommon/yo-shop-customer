@@ -10,7 +10,9 @@ export const showSuccess = (msg, callback) => {
   uni.showToast({
     title: msg,
     icon: 'success',
+    // #ifndef MP-ALIPAY
     mask: true,
+    // #endif
     duration: 1500,
     success() {
       callback && callback()
@@ -39,7 +41,9 @@ export const showToast = (msg, duration = 1500, mask = true) => {
   uni.showToast({
     title: msg, // 提示的内容
     icon: 'none',
+    // #ifndef MP-ALIPAY
     mask, // 是否显示透明蒙层，防止触摸穿透 (支付宝小程序不支持)
+    // #endif
     duration // 提示的延迟时间，单位毫秒，默认：1500	
   })
 }
@@ -92,7 +96,9 @@ export const getShareUrlParams = params => {
  * @return {object}
  */
 export const getShareParams = params => {
-  return { ...params }
+  return {
+    ...params
+  }
 }
 
 /**
@@ -231,8 +237,7 @@ export const getSceneData = query => {
  * mix: 免费版暂无该功能
  */
 export const checkModuleKey = moduleKey => {
-  // return util.inArray(moduleKey, store.getters.modules)
-  return true
+  return util.inArray(moduleKey, store.getters.modules)
 }
 
 /**
@@ -289,4 +294,14 @@ export const onLink = linkObj => {
     // #endif
   }
   return true
+}
+
+// style变量样式转为字符串 (因小程序端不支持styleObject语法)
+export const styleObj2Str = appTheme => {
+  let str = ''
+  for (const index in appTheme) {
+    const name = util.formatToLine(index)
+    str += `--${name}:${appTheme[index]};`
+  }
+  return str
 }
