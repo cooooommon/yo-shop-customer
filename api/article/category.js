@@ -5,7 +5,7 @@ const api = {
   list: 'article.category/list'
 }
 
-// 页面数据
+// 分类列表
 export function list() {
   return request.get(api.list)
 }
