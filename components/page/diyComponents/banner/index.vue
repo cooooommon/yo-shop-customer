@@ -9,7 +9,8 @@
       </swiper-item>
     </swiper>
     <!-- 指示点 -->
-    <view class="indicator-dots" :class="itemStyle.btnShape" :style="{ '--padding-top': `${itemStyle.paddingTop * 2}rpx` }">
+    <view class="indicator-dots" :class="itemStyle.btnShape"
+      :style="{ '--padding-top': `${itemStyle.paddingTop > 0 ? itemStyle.paddingTop * 2 : 1 }rpx` }">
       <view class="dots-item" :class="{ active: swiperIndex == index }" :style="{ backgroundColor: itemStyle.btnColor }"
         v-for="(dataItem, index) in dataList" :key="index"></view>
     </view>
