@@ -6,9 +6,9 @@
       <!-- 主图视频 -->
       <swiper-item v-if="video">
         <view class="slide-video">
-          <video id="myVideo" class="video" :poster="videoCover ? videoCover.preview_url : ''" :src="video.external_url" controls x5-playsinline playsinline
-            x5-video-player-type="h5" x5-video-player-fullscreen x5-video-orientation="portrait" :enable-progress-gesture="false"
-            @play="onVideoPlay"></video>
+          <video id="myVideo" class="video" :poster="videoCover ? videoCover.preview_url : ''" :src="video.external_url" controls
+            x5-playsinline playsinline x5-video-player-type="h5" x5-video-player-fullscreen x5-video-orientation="portrait"
+            :enable-progress-gesture="false" @play="onVideoPlay"></video>
         </view>
       </swiper-item>
       <!-- 轮播图片 -->
@@ -51,7 +51,7 @@
     },
     data() {
       return {
-        indicatorDots: true, // 是否显示面板指示点
+        indicatorDots: false, // 是否显示面板指示点
         autoplay: true, // 是否自动切换
         interval: 4000, // 自动切换时间间隔
         duration: 800, // 滑动动画时长
@@ -96,14 +96,8 @@
   }
 
   .swiper-box {
-    width: 100%;
-    height: 100vw;
-
-    /* #ifdef H5 */
-    max-width: 480px;
-    max-height: 480px;
-    margin: 0 auto;
-    /* #endif */
+    width: 750rpx;
+    height: 750rpx;
 
     // 主图视频
     .slide-video {

@@ -117,10 +117,6 @@
   }
 
   .coupon-list {
-    /* #ifdef H5 */
-    max-width: 1120rpx;
-    margin: 0 auto;
-    /* #endif */
     padding: 40rpx 30rpx;
   }
 
@@ -485,6 +481,36 @@
     &.on {
       color: $main-bg;
       border-bottom: 2px solid $main-bg;
+    }
+  }
+}
+
+// 门店自提联系人
+.flow-extract-contact {
+  padding: 8rpx 24rpx;
+  font-size: 28rpx;
+  color: #444;
+  margin-bottom: 25rpx;
+
+  .contact-item {
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid rgb(248, 248, 248);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .item-label {
+    margin-right: 26rpx;
+    width: 150rpx;
+  }
+
+  .item-ipt .input {
+    font-size: 28rpx;
+
+    .input-placeholder {
+      font-size: 28rpx;
     }
   }
 }
