@@ -832,8 +832,8 @@
   .footer-fixed {
     position: fixed;
     bottom: var(--window-bottom);
-    left: 0;
-    right: 0;
+    left: var(--window-left);
+    right: var(--window-right);
     z-index: 11;
     box-shadow: 0 -4rpx 40rpx 0 rgba(151, 151, 151, 0.24);
     background: #fff;

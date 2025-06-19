@@ -118,8 +118,8 @@
 .footer-fixed {
   position: fixed;
   bottom: var(--window-bottom);
-  left: 0;
-  right: 0;
+  left: var(--window-left);
+  right: var(--window-right);
   display: flex;
   z-index: 11;
   box-shadow: 0 -4rpx 40rpx 0 rgba(151, 151, 151, 0.24);
@@ -155,7 +155,6 @@
 
     &--cart {
       margin-left: 6rpx;
-
       .fast-icon {
         margin-left: -12rpx;
       }

@@ -40,6 +40,10 @@
     created() {
       const { windowWidth } = uni.getWindowInfo()
       this.windowWidth = windowWidth > 750 ? 750 : windowWidth
+      // #ifdef H5
+      // 此处取决于pages.json中的maxWidth
+      this.windowWidth = windowWidth > 450 ? 450 : windowWidth
+      // #endif
     },
     methods: {
       // 计算图片高度

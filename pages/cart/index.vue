@@ -431,8 +431,8 @@
     padding: 0 30rpx;
     position: fixed;
     bottom: var(--window-bottom);
-    left: 0;
-    right: 0;
+    left: var(--window-left);
+    right: var(--window-right);
     z-index: 11;
 
     .all-radio {

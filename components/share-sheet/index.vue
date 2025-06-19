@@ -164,7 +164,7 @@
 
   .sharesheet__mask {
     position: fixed;
-    top: 0;
+    top: var(--window-top);
     left: var(--window-left);
     right: var(--window-right);
     bottom: var(--window-bottom);

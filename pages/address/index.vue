@@ -274,8 +274,8 @@
   .footer-fixed {
     position: fixed;
     bottom: var(--window-bottom);
-    left: 0;
-    right: 0;
+    left: var(--window-left);
+    right: var(--window-right);
     z-index: 11;
 
     // 设置ios刘海屏底部横线安全区域

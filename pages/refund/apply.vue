@@ -252,18 +252,18 @@
       padding-left: 20rpx;
     }
 
-      .goods-props {
-        margin-top: 14rpx;
-        color: #ababab;
-        font-size: 24rpx;
-        overflow: hidden;
+    .goods-props {
+      margin-top: 14rpx;
+      color: #ababab;
+      font-size: 24rpx;
+      overflow: hidden;
 
-        .goods-props-item {
-          padding: 4rpx 16rpx;
-          border-radius: 12rpx;
-          background-color: #fcfcfc;
-        }
+      .goods-props-item {
+        padding: 4rpx 16rpx;
+        border-radius: 12rpx;
+        background-color: #fcfcfc;
       }
+    }
   }
 
   /* 服务类型 */
@@ -390,8 +390,8 @@
   .footer-fixed {
     position: fixed;
     bottom: var(--window-bottom);
-    left: 0;
-    right: 0;
+    left: var(--window-left);
+    right: var(--window-right);
     z-index: 11;
 
     // 设置ios刘海屏底部横线安全区域
