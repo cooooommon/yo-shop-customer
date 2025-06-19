@@ -59,6 +59,10 @@
       <view class="btn-wrapper" v-if="outFoStock || mode == 4">
         <view class="sure" style="color:#ffffff;background-color:#cccccc">{{ noStockText }}</view>
       </view>
+      <view class="btn-wrapper" v-else-if="mode == 5">
+        <view class="sure" style="color:#ffffff;background-color:#cccccc">{{ disableText }}</view>
+      </view>
+
       <view class="btn-wrapper" v-else-if="mode == 1">
         <view class="sure add-cart" style="border-radius:38rpx 0rpx 0rpx 38rpx;" :style="{
 						color: themeColorFn('addCartColor'),
@@ -170,7 +174,7 @@
         Type: String,
         default: '默认'
       },
-      // 模式 1:都显示  2:只显示购物车 3:只显示立即购买 4:显示缺货按钮 默认 1
+      // 模式 1:都显示  2:只显示购物车 3:只显示立即购买 4:显示缺货按钮 5:禁用 默认 1
       mode: {
         Type: Number,
         default: 1
@@ -329,6 +333,11 @@
         Type: Boolean,
         default: true
       },
+      // 按钮禁用提示的文字
+      disableText: {
+        Type: String,
+        default: "暂不支持购买"
+      }
     },
     data() {
       return {

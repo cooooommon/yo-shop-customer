@@ -177,13 +177,13 @@
     margin-bottom: 20rpx;
 
     .row-block {
-      padding: 0 20rpx;
+      padding: 0 30rpx;
       min-height: 70rpx;
     }
 
     .detail-goods {
-      padding: 20rpx;
-      background: #f9f9f9;
+      padding: 20rpx 30rpx;
+      background: #fbfbfb;
 
       .goods-image {
         margin-right: 20rpx;
@@ -223,7 +223,7 @@
     }
 
     .detail-order {
-      padding: 10rpx 20rpx;
+      padding: 10rpx 30rpx;
       font-size: 28rpx;
       height: 50rpx;
       display: flex;
