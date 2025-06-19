@@ -1,8 +1,10 @@
 <template>
   <!-- 搜索框 -->
-  <view class="diy-search" :class="{ sticky: params.sticky }">
+  <view class="diy-search" :class="{ sticky: params.sticky }"
+    :style="{ background: itemStyle.background, padding: `${itemStyle.paddingY * 2}rpx ${itemStyle.paddingX * 2}rpx` }">
     <view class="inner" :class="itemStyle.searchStyle" @click="onTargetSearch">
-      <view class="search-input" :style="{ textAlign: itemStyle.textAlign }">
+      <view class="search-input"
+        :style="{ textAlign: itemStyle.textAlign, background: itemStyle.searchBg, color: itemStyle.searchFontColor }">
         <text class="search-icon iconfont icon-search"></text>
         <text> {{ params.placeholder }}</text>
       </view>
@@ -45,7 +47,6 @@
   .diy-search {
     background: #f1f1f2;
     padding: 20rpx 20rpx;
-    font-size: 26rpx;
 
     &.sticky {
       position: sticky;
@@ -66,17 +67,18 @@
     &.round {
       border-radius: 60rpx;
     }
-  }
 
-  .search-input {
-    height: 60rpx;
-    color: #999;
-    padding: 0 20rpx;
-    display: flex;
-    align-items: center;
+    .search-input {
+      height: 60rpx;
+      //width: 100%;
+      line-height: 60rpx;
+      color: #999999;
+      padding: 0 24rpx;
+      font-size: 26rpx;
 
-    .search-icon {
-      margin-right: 8rpx;
+      .search-icon {
+        margin-right: 12rpx;
+      }
     }
   }
 </style>

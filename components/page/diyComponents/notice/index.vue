@@ -1,9 +1,9 @@
 <template>
   <!-- 店铺公告 -->
-  <view class="diy-notice" :style="{ paddingTop: `${itemStyle.paddingTop * 2}rpx`, paddingBottom: `${itemStyle.paddingTop * 2}rpx` }"
+  <view class="diy-notice" :style="{ padding: `${itemStyle.paddingTop * 2}rpx 0` }"
     @click="onLink(params.link)">
     <u-notice-bar padding="10rpx 24rpx" :volume-icon="params.showIcon" :autoplay="params.scrollable"
-      :bg-color="itemStyle.background" :color="itemStyle.textColor" :list="[params.text]"></u-notice-bar>
+      :bg-color="itemStyle.background" :color="itemStyle.textColor" :list="[params.text]" :font-size="itemStyle.fontSize * 2"></u-notice-bar>
   </view>
 </template>
 

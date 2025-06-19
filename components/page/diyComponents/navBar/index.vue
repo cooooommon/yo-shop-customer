@@ -1,14 +1,14 @@
 <template>
   <!-- 导航组 -->
-  <view class="diy-navBar" :style="{ background: itemStyle.background, color: itemStyle.textColor }">
+  <view class="diy-navBar"
+    :style="{ padding: `${itemStyle.paddingTop}px 0`, background: itemStyle.background, color: itemStyle.textColor }">
     <view class="data-list" :class="[`avg-sm-${itemStyle.rowsNum}`]">
-      <view class="item-nav" v-for="(dataItem, index) in dataList" :key="index">
-        <view class="nav-to" @click="onLink(dataItem.link)">
-          <view class="item-image">
-            <image class="image" mode="widthFix" :src="dataItem.imgUrl"></image>
-          </view>
-          <view class="item-text oneline-hide">{{ dataItem.text }}</view>
+      <view class="item-nav" v-for="(dataItem, index) in dataList" :key="index" @click="onLink(dataItem.link)">
+        <view class="item-image">
+          <image class="image" :style="{ width: `${itemStyle.imageSize * 2}rpx`, height: `${itemStyle.imageSize * 2}rpx` }" mode="widthFix"
+            :src="dataItem.imgUrl"></image>
         </view>
+        <view class="item-text oneline-hide">{{ dataItem.text }}</view>
       </view>
     </view>
   </view>
@@ -50,38 +50,49 @@
     display: table;
   }
 
-  .item-nav {
-    float: left;
-    margin: 10px 0;
-    text-align: center;
+  .diy-navBar {
+    display: flex;
+    flex-direction: column;
 
-    .item-text {
+    .data-list {
+      // margin-bottom: -20rpx;
+    }
+
+    .item-nav {
+      float: left;
+      text-align: center;
+      // margin-bottom: 20rpx;
       font-size: 26rpx;
+
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      font-size: 13px;
+
+
+      .item-image {
+        text-align: center;
+        margin-bottom: 8rpx;
+
+        .image {
+          display: block;
+          width: 88rpx;
+          height: 88rpx;
+          margin: 0 auto;
+        }
+      }
     }
 
-    .item-image {
-      margin-bottom: 4px;
-      font-size: 0;
+    // 分列布局
+    .avg-sm-3>.item-nav {
+      width: 33.33333333%;
     }
 
-    .item-image .image {
-      width: 88rpx;
-      height: 88rpx;
+    .avg-sm-4>.item-nav {
+      width: 25%;
     }
 
-  }
+    .avg-sm-5>.item-nav {
+      width: 20%;
+    }
 
-  /* 分列布局 */
-
-  .diy-navBar .avg-sm-3>.item-nav {
-    width: 33.33333333%;
-  }
-
-  .diy-navBar .avg-sm-4>.item-nav {
-    width: 25%;
-  }
-
-  .diy-navBar .avg-sm-5>.item-nav {
-    width: 20%;
   }
 </style>
