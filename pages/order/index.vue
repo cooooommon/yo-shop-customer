@@ -58,7 +58,8 @@
               </block>
               <!-- 已支付进行中的订单 -->
               <block v-if="item.order_status != OrderStatusEnum.APPLY_CANCEL.value">
-                <block v-if="item.pay_status == PayStatusEnum.SUCCESS.value && item.delivery_status == DeliveryStatusEnum.NOT_DELIVERED.value">
+                <block
+                  v-if="item.pay_status == PayStatusEnum.SUCCESS.value && item.delivery_status == DeliveryStatusEnum.NOT_DELIVERED.value">
                   <view class="btn-item" @click="onCancel(item.order_id)">申请取消</view>
                 </block>
               </block>
@@ -69,7 +70,8 @@
                 <view class="btn-item active" @click="onPay(item.order_id)">去支付</view>
               </block>
               <!-- 确认收货 -->
-              <block v-if="item.delivery_status == DeliveryStatusEnum.DELIVERED.value && item.receipt_status == ReceiptStatusEnum.NOT_RECEIVED.value">
+              <block
+                v-if="item.delivery_status == DeliveryStatusEnum.DELIVERED.value && item.receipt_status == ReceiptStatusEnum.NOT_RECEIVED.value">
                 <view class="btn-item active" @click="onReceipt(index)">确认收货</view>
               </block>
               <!-- 订单评价 -->
@@ -86,6 +88,7 @@
 
 <script>
   import {
+    OrderSourceEnum,
     DeliveryStatusEnum,
     DeliveryTypeEnum,
     OrderStatusEnum,
@@ -126,21 +129,20 @@
     data() {
       return {
         // 枚举类
+        OrderSourceEnum,
         DeliveryStatusEnum,
         DeliveryTypeEnum,
         OrderStatusEnum,
         PayStatusEnum,
         ReceiptStatusEnum,
-
         // 当前页面参数
-        options: { dataType: 'all' },
+        options: { dataType: 'all', orderSource: null },
         // tab栏数据
         tabs,
         // 当前标签索引
         curTab: 0,
         // 订单列表数据
         list: getEmptyPaginateObj(),
-
         // 上拉加载配置
         upOption: {
           // 首次自动执行
@@ -150,9 +152,7 @@
           // 数量要大于4条才显示无更多数据
           noMoreSize: 4,
           // 空布局
-          empty: {
-            tip: '亲，暂无订单记录'
-          }
+          empty: { tip: '亲，暂无订单记录' }
         },
         // 控制onShow事件是否刷新订单列表
         canReset: false
@@ -163,8 +163,10 @@
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+      // 记录query参数
+      this.options = { ...this.options, ...options }
       // 初始化当前选中的标签
-      this.initCurTab(options)
+      this.initCurTab()
       // 注册全局事件订阅: 是否刷新订单列表
       uni.$on('syncRefresh', canReset => {
         this.canReset = canReset
@@ -199,11 +201,11 @@
     methods: {
 
       // 初始化当前选中的标签
-      initCurTab(options) {
-        const app = this
+      initCurTab() {
+        const { options } = this
         if (options.dataType) {
-          const index = app.tabs.findIndex(item => item.value == options.dataType)
-          app.curTab = index > -1 ? index : 0
+          const index = this.tabs.findIndex(item => item.value == options.dataType)
+          this.curTab = index > -1 ? index : 0
         }
       },
 
@@ -228,7 +230,11 @@
       getOrderList(pageNo = 1) {
         const app = this
         return new Promise((resolve, reject) => {
-          OrderApi.list({ dataType: app.getTabValue(), page: pageNo }, { load: false })
+          OrderApi.list({
+              dataType: app.getTabValue(),
+              orderSource: app.options.orderSource,
+              page: pageNo,
+            }, { load: false })
             .then(result => {
               // 合并新数据
               const newList = app.initList(result.data.list)
@@ -464,18 +470,18 @@
           max-height: 76rpx;
         }
 
-      .goods-props {
-        margin-top: 14rpx;
-        color: #ababab;
-        font-size: 24rpx;
-        overflow: hidden;
+        .goods-props {
+          margin-top: 14rpx;
+          color: #ababab;
+          font-size: 24rpx;
+          overflow: hidden;
 
-        .goods-props-item {
-          padding: 4rpx 16rpx;
-          border-radius: 12rpx;
-          background-color: #fcfcfc;
+          .goods-props-item {
+            padding: 4rpx 16rpx;
+            border-radius: 12rpx;
+            background-color: #fcfcfc;
+          }
         }
-      }
 
 
       }
@@ -548,5 +554,4 @@
     }
 
   }
-
 </style>

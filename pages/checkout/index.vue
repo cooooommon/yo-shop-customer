@@ -1,6 +1,6 @@
 <template>
   <view class="container p-bottom" :style="appThemeStyle">
-    <view v-if="order.goodsList.length">
+    <view v-if="order.goodsList.length && order.goodsList.length">
       <!-- 实物订单：选择配送方式 -->
       <block v-if="order.orderType == OrderTypeEnum.PHYSICAL.value">
         <!-- 配送方式选项卡 -->
@@ -285,24 +285,7 @@
         // 是否显示优惠券弹窗
         showPopup: false,
         // 订单信息 (从后端api中获取)
-        order: {
-          // 商品列表
-          goodsList: [],
-          // 优惠券列表
-          couponList: [],
-          // 是否存在收货地址
-          existAddress: false,
-          // 默认收货地址
-          address: null,
-          // 是否存在收货地址
-          existAddress: false,
-          // 当前用户收货城市是否存在配送规则中
-          isIntraRegion: true,
-          // 是否存在错误
-          hasError: false,
-          // 错误信息
-          errorMsg: '',
-        },
+        order: {},
         // 个人信息
         personal: {},
         // 商城设置
@@ -457,21 +440,19 @@
         getCheckoutApi(app.options.mode)
           .submit(app.options.mode, app.getFormData())
           .then(result => {
-            // 订单创建成功: 跳转到订单支付页
+            // 订单创建成功
             const orderId = result.data.orderId
-            setTimeout(() => {
-              this.$navTo('pages/checkout/cashier/index', { orderId }, 'redirectTo')
-            }, 100)
+            // 判断订单是否已支付: 已支付跳转订单列表  未支付跳转支付页
+            if (result.data.isPaySuccess) {
+              app.showToast(result.message, 1500)
+              setTimeout(() => app.$navTo('pages/order/index', {}, 'redirectTo'), 1500)
+            } else {
+              // 订单未支付: 跳转到订单支付页
+              setTimeout(() => app.$navTo('pages/checkout/cashier/index', { orderId }, 'redirectTo'), 100)
+            }
           })
           .catch(res => app.showToast(res.errMsg, 3000))
           .finally(() => setTimeout(() => app.disabled = false, 800))
-      },
-
-      // 跳转到我的订单(等待1秒)
-      navToMyOrder() {
-        setTimeout(() => {
-          this.$navTo('pages/order/index', {}, 'redirectTo')
-        }, 1000)
       },
 
       // 表单提交的数据

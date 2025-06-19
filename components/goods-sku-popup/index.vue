@@ -39,11 +39,14 @@
                 </view>
               </view>
             </view>
+            <!-- 显示限购 -->
             <view class="number-box-view">
-              <view style="flex: 1;">数量</view>
-              <view style="flex: 4;text-align: right;">
+              <view style="flex: 1; display: flex; align-items: center;">数量</view>
+              <view style="flex: 4; display: flex; align-items: center; justify-content: flex-end;">
+                <text v-if="maxBuyNum > 0" style="margin-right: 18rpx; font-size: 26rpx; color: #e74800;">限购{{ maxBuyNum }}件</text>
                 <number-box v-model="selectNum" :min="minBuyNum || 1" :max="maxBuyNumCom" :step="stepBuyNum || 1"
-                  :step-strictly="stepStrictly" :positive-integer="true" @change="numChange" />
+                  :step-strictly="stepStrictly" :positive-integer="true">
+                </number-box>
               </view>
             </view>
           </view>
@@ -1161,11 +1164,11 @@
 
             .specification-right {
               flex: 1;
-              padding: 0 35rpx 10rpx 28rpx;
+              padding: 0 50rpx 10rpx 28rpx;
               box-sizing: border-box;
               display: flex;
               flex-direction: column;
-              justify-content: flex-end;
+              justify-content: center;
               font-weight: 500;
 
               .price-content {

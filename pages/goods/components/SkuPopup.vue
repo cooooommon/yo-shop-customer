@@ -23,7 +23,7 @@
         Type: Boolean,
         default: false
       },
-      // 模式 1:都显示 2:只显示购物车 3:只显示立即购买
+      // 模式 1:都显示 2:只显示购物车 3:只显示立即购买 4:显示缺货按钮 默认 1
       skuMode: {
         type: Number,
         default: 1

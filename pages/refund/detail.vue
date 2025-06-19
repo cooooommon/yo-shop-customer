@@ -293,7 +293,10 @@
               uni.navigateBack()
             }, 1500)
           })
-          .catch(err => app.disabled = false)
+          .catch(err => {
+            app.$toast(err.errMsg)
+            app.disabled = false
+          })
       }
 
     }

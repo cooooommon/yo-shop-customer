@@ -260,7 +260,7 @@
 
   export default {
     data() {
-      return {    
+      return {
         // 外部方法
         inArray,
         // 枚举类
@@ -614,7 +614,7 @@
       .item-lable {
         display: flex;
         align-items: center;
-        font-size: 24rpx;
+        font-size: 26rpx;
         color: #999;
         margin-right: 30rpx;
       }
@@ -814,10 +814,15 @@
       display: flex;
       justify-content: flex-end;
 
+      .lable {
+        font-size: 26rpx;
+      }
+
       .goods-price {
-        margin-left: 12rpx;
+        // margin-left: 12rpx;
         vertical-align: bottom;
         color: $main-bg;
+        font-size: 28rpx;
 
         .unit {
           margin-right: -2rpx;
