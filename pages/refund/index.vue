@@ -200,6 +200,7 @@
       }
 
       .goods-name {
+        font-size: 27rpx;
         margin-bottom: 10rpx;
         // min-height: 68rpx;
         // line-height: 1.3;

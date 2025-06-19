@@ -364,7 +364,7 @@
         margin-top: 10rpx;
         white-space: normal;
         color: #484848;
-        font-size: 26rpx;
+        font-size: 27rpx;
         // min-height: 68rpx;
         // line-height: 1.3;
       }
@@ -444,7 +444,7 @@
       .goods-name {
         white-space: normal;
         color: #484848;
-        font-size: 26rpx;
+        font-size: 27rpx;
         margin-bottom: 4rpx;
         // min-height: 68rpx;
         // line-height: 1.3;

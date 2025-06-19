@@ -200,10 +200,6 @@
           .goods-info {
             padding: 0;
 
-            .goods-name {
-              font-size: 27rpx;
-            }
-
             .footer {
               position: absolute;
               bottom: 16rpx;
@@ -242,7 +238,6 @@
             margin-right: 0;
           }
         }
-
       }
 
       // 3列
@@ -253,6 +248,10 @@
           &:nth-child(3n) {
             margin-right: 0;
           }
+        }
+
+        .goods-name {
+          font-size: 26rpx !important;
         }
       }
 
@@ -298,7 +297,7 @@
           padding: 20rpx;
 
           .goods-name {
-            font-size: 26rpx;
+            font-size: 27rpx;
             color: #000;
             margin-bottom: 8rpx;
             // line-height: 1.3; // 用户端
@@ -312,7 +311,7 @@
             display: flex; // 解决文字超出无法隐藏
             font-size: 24rpx;
             margin-bottom: 8rpx;
-            height: 38rpx;
+            min-height: 38rpx;
           }
 
           .goods-sales {

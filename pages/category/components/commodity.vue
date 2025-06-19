@@ -289,7 +289,7 @@
     .goods-name {
       display: block;
       width: 100%;
-      font-size: 28rpx;
+      font-size: 27rpx;
       // min-height: 68rpx;
       // line-height: 1.3;
       color: #333;
