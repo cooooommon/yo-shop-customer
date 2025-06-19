@@ -116,7 +116,9 @@
 
       // 跳转商品详情页
       handleGoodsItem(goodsId) {
-        this.$navTo(`pages/goods/detail`, { goodsId })
+        if (goodsId !== undefined) {
+          this.$navTo(`pages/goods/detail`, { goodsId })
+        }
       },
 
       // 点击加入购物车

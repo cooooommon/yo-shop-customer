@@ -5,7 +5,7 @@
     <view class="data-list" :class="[`avg-sm-${itemStyle.rowsNum}`]">
       <view class="item-nav" v-for="(dataItem, index) in dataList" :key="index" @click="onLink(dataItem.link)">
         <view class="item-image">
-          <image class="image" :style="{ width: `${itemStyle.imageSize * 2}rpx`, height: `${itemStyle.imageSize * 2}rpx` }" mode="widthFix"
+          <image class="image" :style="{ width: `${itemStyle.imageSize * 2}rpx`, height: `${itemStyle.imageSize * 2}rpx` }" mode="scaleToFill"
             :src="dataItem.imgUrl"></image>
         </view>
         <view class="item-text oneline-hide">{{ dataItem.text }}</view>
@@ -55,18 +55,14 @@
     flex-direction: column;
 
     .data-list {
-      // margin-bottom: -20rpx;
+      margin-bottom: -20rpx;
     }
 
     .item-nav {
       float: left;
       text-align: center;
-      // margin-bottom: 20rpx;
+      margin-bottom: 20rpx;
       font-size: 26rpx;
-
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      font-size: 13px;
-
 
       .item-image {
         text-align: center;

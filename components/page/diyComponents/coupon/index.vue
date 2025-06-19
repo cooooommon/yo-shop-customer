@@ -83,7 +83,7 @@
       // 立即领取事件
       handleReceive(index, item) {
         const app = this
-        if (app.disable || !item.state.value) {
+        if (app.disable || !item.state.value|| !item.coupon_id) {
           return
         }
         app.disable = true
