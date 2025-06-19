@@ -5,7 +5,7 @@
       <!-- 支付剩余时间 -->
       <view v-if="order.showExpiration" class="order-countdown">
         <text class="m-r-6">剩余时间</text>
-        <count-down :date="order.expirationTime" separator="zh" theme="text" />
+        <count-down :date="order.expirationTime" separator="zh" theme="text" textColor="#666666" customNumColor="#666666" />
       </view>
       <!-- 付款金额 -->
       <view class="order-amount">
@@ -13,7 +13,6 @@
         <text class="amount">{{ order.pay_price }}</text>
       </view>
     </view>
-
     <!-- 支付方式 -->
     <view class="payment-method">
       <view v-for="(item, index) in methods" :key="index" class="pay-item dis-flex flex-x-between" @click="handleSelectPayType(index)">
@@ -33,14 +32,12 @@
         </view>
       </view>
     </view>
-
     <!-- 确认按钮 -->
     <view class="footer-fixed">
       <view class="btn-wrapper">
         <view class="btn-item btn-item-main" :class="{ disabled }" @click="handleSubmit()">确认支付</view>
       </view>
     </view>
-
     <!-- 支付确认弹窗 -->
     <!-- #ifdef H5 -->
     <u-modal v-if="tempUnifyData" v-model="showConfirmModal" title="支付确认" show-cancel-button confirm-text="已完成支付"

@@ -1,5 +1,5 @@
 <template>
-  <view v-if="date" class="count-down">
+  <view v-if="date" class="count-down" :style="{ color: textColor, fontSize: `${fontSize}rpx` }">
     <view :class="[`${theme}-theme`, `separator-${separator}`]">
       <!-- <block v-if="dynamic.day != '00'">
         <text class="dynamic-value">{{ dynamic.day }}</text>
@@ -9,11 +9,11 @@
         <text class="dynamic-value">{{ dynamic.day }}</text>
         <text class="separator">{{ separatorText.day }}</text>
       </block>
-      <text class="dynamic-value" :style="{ backgroundColor: customBgColor }">{{ dynamic.hou }}</text>
+      <text class="dynamic-value" :style="{ backgroundColor: customNumBgColor, color: customNumColor }">{{ dynamic.hou }}</text>
       <text class="separator">{{ separatorText.hou }}</text>
-      <text class="dynamic-value" :style="{ backgroundColor: customBgColor }">{{ dynamic.min }}</text>
+      <text class="dynamic-value" :style="{ backgroundColor: customNumBgColor, color: customNumColor }">{{ dynamic.min }}</text>
       <text class="separator">{{ separatorText.min }}</text>
-      <text class="dynamic-value" :style="{ backgroundColor: customBgColor }">{{ dynamic.sec }}</text>
+      <text class="dynamic-value" :style="{ backgroundColor: customNumBgColor, color: customNumColor }">{{ dynamic.sec }}</text>
       <text class="separator">{{ separatorText.sec }}</text>
     </view>
   </view>
@@ -39,11 +39,25 @@
         type: String,
         default: 'text'
       },
-      // custom样式的背景色
-      customBgColor: {
+      // custom: 倒计时文字颜色 (分隔符和纯文本)
+      textColor: {
+        type: String,
+        default: '#303133'
+      },
+      fontSize: {
+        type: Number,
+        default: 26
+      },
+      // custom: 倒计时数字背景颜色
+      customNumBgColor: {
         type: String,
         default: '#252525'
-      }
+      },
+      // custom: 倒计时数字颜色
+      customNumColor: {
+        type: String,
+        default: '#fff'
+      },
     },
     data() {
       return {
@@ -138,17 +152,11 @@
 </script>
 
 <style lang="scss" scoped>
-  .item {
-    display: inline-block;
-    width: 22px;
-    margin-right: 5px;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-    background-color: #1989fa;
-    border-radius: 2px;
+  .count-down {
+    font-size: 26rpx;
   }
 
+  // 分隔符
   .separator {
     padding: 0 2rpx;
   }
@@ -169,11 +177,14 @@
   // 背景主题
   .custom-theme {
     .dynamic-value {
+      display: inline-block;
       background: #252525;
-      color: #fff;
-      padding: 2rpx 8rpx;
+      width: 40rpx;
+      height: 40rpx;
       line-height: 40rpx;
+      text-align: center;
       border-radius: 8rpx;
+      color: #fff;
     }
 
     .separator {
