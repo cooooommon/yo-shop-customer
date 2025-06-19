@@ -289,9 +289,9 @@
     .goods-name {
       display: block;
       width: 100%;
-      min-height: 68rpx;
       font-size: 28rpx;
-      line-height: 1.3;
+      // min-height: 68rpx;
+      // line-height: 1.3;
       color: #333;
     }
   }

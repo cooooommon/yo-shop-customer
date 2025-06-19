@@ -365,8 +365,8 @@
         white-space: normal;
         color: #484848;
         font-size: 26rpx;
-        min-height: 68rpx;
-        line-height: 1.3;
+        // min-height: 68rpx;
+        // line-height: 1.3;
       }
     }
 
@@ -446,8 +446,8 @@
         color: #484848;
         font-size: 26rpx;
         margin-bottom: 4rpx;
-        min-height: 68rpx;
-        line-height: 1.3;
+        // min-height: 68rpx;
+        // line-height: 1.3;
       }
 
       .detail-price {

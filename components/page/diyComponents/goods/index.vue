@@ -301,10 +301,10 @@
             font-size: 26rpx;
             color: #000;
             margin-bottom: 8rpx;
-            line-height: 1.3; // 用户端
+            // line-height: 1.3; // 用户端
 
             &.row-two {
-              min-height: 68rpx; // 用户端
+              // min-height: 68rpx; // 用户端
             }
           }
 
