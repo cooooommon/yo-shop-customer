@@ -167,7 +167,7 @@ $http.dataFactory = async res => {
 
   // 其他错误提示
   if (httpData.status == 500) {
-    if (res.isPrompt) {
+    if (res.isPrompt && httpData.data.isPrompt) {
       setTimeout(() => {
         uni.showToast({
           title: httpData.message,

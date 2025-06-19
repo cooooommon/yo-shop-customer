@@ -243,10 +243,6 @@
           })
           .catch(err => {
             app.disabled = false
-            // 跳转回原页面
-            if (err.result.data.isBack) {
-              setTimeout(() => app.onNavigateBack(1), 2000)
-            }
           })
           .finally(() => app.isLoading = false)
       },

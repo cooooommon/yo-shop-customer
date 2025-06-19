@@ -49,7 +49,7 @@ const user = {
     // 微信小程序一键授权登录 (获取用户基本信息)
     LoginMpWx({ commit }, data) {
       return new Promise((resolve, reject) => {
-        LoginApi.loginMpWx({ form: data }, { isPrompt: false })
+        LoginApi.loginMpWx({ form: data }, { isPrompt: true })
           .then(response => {
             const result = response.data
             loginSuccess(commit, result)
@@ -62,7 +62,7 @@ const user = {
     // 微信小程序一键授权登录 (授权手机号)
     LoginMpWxMobile({ commit }, data) {
       return new Promise((resolve, reject) => {
-        LoginApi.loginMpWxMobile({ form: data }, { isPrompt: false })
+        LoginApi.loginMpWxMobile({ form: data }, { isPrompt: true })
           .then(response => {
             const result = response.data
             loginSuccess(commit, result)

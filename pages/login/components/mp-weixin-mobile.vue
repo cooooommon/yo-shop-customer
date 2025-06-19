@@ -71,14 +71,6 @@
             })
             .catch(err => {
               const resultData = err.result.data
-              // 显示错误信息
-              if (isEmpty(resultData)) {
-                app.$toast(err.result.message)
-              }
-              // 跳转回原页面
-              if (resultData.isBack) {
-                setTimeout(() => app.onNavigateBack(1), 2000)
-              }
             })
             .finally(() => app.isLoading = false)
         }
