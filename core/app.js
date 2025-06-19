@@ -97,6 +97,7 @@ export const getShareUrlParams = params => {
  */
 export const getShareParams = params => {
   return {
+    refereeId: store.getters.userId, // 推荐人ID
     ...params
   }
 }
@@ -234,7 +235,6 @@ export const getSceneData = query => {
 
 /**
  * 验证指定的功能模块是否开启
- * mix: 免费版暂无该功能
  */
 export const checkModuleKey = moduleKey => {
   return util.inArray(moduleKey, store.getters.modules)
@@ -285,12 +285,15 @@ export const onLink = linkObj => {
     // #ifdef APP-PLUS
     plus.runtime.openWeb(linkObj.param.url)
     // #endif
+    // #ifdef MP-WEIXIN
+    navTo('pages/web-view/index', { src: encodeURIComponent(linkObj.param.url) })
+    // #endif
     // #ifdef MP
-    uni.setClipboardData({
-      data: linkObj.param.url,
-      success: () => showToast('链接已复制'),
-      fail: ({ errMsg }) => showToast('复制失败 ' + errMsg)
-    })
+    // uni.setClipboardData({
+    //   data: linkObj.param.url,
+    //   success: () => showToast('链接已复制'),
+    //   fail: ({ errMsg }) => showToast('复制失败 ' + errMsg)
+    // })
     // #endif
   }
   return true
