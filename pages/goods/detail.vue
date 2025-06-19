@@ -129,7 +129,7 @@
     </view>
 
     <!-- 快捷导航 -->
-    <!-- <shortcut bottom="120rpx" /> -->
+    <!-- <shortcut bottom="120" /> -->
 
     <!-- 分享菜单 -->
     <share-sheet v-model="showShareSheet" :shareTitle="goods.goods_name" :shareImageUrl="goods.goods_image" />

@@ -1,5 +1,5 @@
 <template>
-  <view class="shortcut" :style="{ '--right': `${rightPx}rpx`, '--bottom': `${bottomPx}rpx` }">
+  <view class="shortcut" :style="{ '--right': `${right}rpx`, '--bottom': `${bottom}rpx` }">
     <!-- 首页 -->
     <view class="nav-item" :class="[isShow ? 'show_80' : (transparent ? '' : 'hide_80')]" @click="handleItem(0)">
       <text class="iconfont icon-home"></text>
