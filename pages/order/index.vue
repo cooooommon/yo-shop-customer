@@ -96,6 +96,7 @@
     ReceiptStatusEnum
   } from '@/common/enum/order'
   import ClientEnum from '@/common/enum/Client'
+  import { PayMethodEnum } from '@/common/enum/payment'
   import MescrollMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins'
   import { getEmptyPaginateObj, getMoreListData } from '@/core/app'
   import * as OrderApi from '@/api/order'
@@ -135,6 +136,7 @@
         OrderStatusEnum,
         PayStatusEnum,
         ReceiptStatusEnum,
+        PayMethodEnum,
         // 当前页面参数
         options: { dataType: 'all', orderSource: null },
         // tab栏数据
