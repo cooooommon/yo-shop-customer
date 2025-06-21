@@ -1,6 +1,6 @@
 <template>
-  <goods-sku-popup :modelValue="modelValue" @input="onChangeValue" border-radius="20" :localdata="goodsInfo" :mode="skuMode" :maskCloseAble="true"
-    :priceColor="appTheme.mainBg" :buyNowBackgroundColor="appTheme.mainBg" :addCartColor="appTheme.viceText"
+  <goods-sku-popup :modelValue="modelValue" @input="onChangeValue" border-radius="20" :localdata="goodsInfo" :mode="skuMode"
+    :maskCloseAble="true" :priceColor="appTheme.mainBg" :buyNowBackgroundColor="appTheme.mainBg" :addCartColor="appTheme.viceText"
     :addCartBackgroundColor="appTheme.viceBg"
     :activedStyle="{ color: appTheme.mainBg, borderColor: appTheme.mainBg, backgroundColor: activedBtnBackgroundColor }"
     @open="openSkuPopup" @close="closeSkuPopup" @add-cart="addCart" @buy-now="buyNow" buyNowText="立即购买" :maxBuyNum="maxBuyNum" />
@@ -16,7 +16,7 @@
     components: {
       GoodsSkuPopup
     },
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'addCart'],
     props: {
       // 控制组件显示隐藏
       modelValue: {
