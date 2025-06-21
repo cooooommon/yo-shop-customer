@@ -1,6 +1,6 @@
 <template>
   <view class="container p-bottom" :style="appThemeStyle">
-    <view v-if="order.goodsList.length && order.goodsList.length">
+    <view v-if="order.goodsList && order.goodsList.length">
       <!-- 实物订单：选择配送方式 -->
       <block v-if="order.orderType == OrderTypeEnum.PHYSICAL.value">
         <!-- 配送方式选项卡 -->
