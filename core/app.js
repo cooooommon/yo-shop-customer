@@ -97,7 +97,6 @@ export const getShareUrlParams = params => {
  */
 export const getShareParams = params => {
   return {
-    refereeId: store.getters.userId, // 推荐人ID
     ...params
   }
 }
@@ -234,9 +233,10 @@ export const getSceneData = query => {
 
 /**
  * 验证指定的功能模块是否开启
+ * mix: 免费版暂无该功能
  */
 export const checkModuleKey = moduleKey => {
-  return util.inArray(moduleKey, store.getters.modules)
+  return true
 }
 
 /**
