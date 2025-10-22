@@ -2,6 +2,7 @@
  * request插件地址：https://ext.dcloud.net.cn/plugin?id=822
  */
 import store from '@/store'
+import { hasOwnProperty, isEmptyObject, filterNull } from '@/utils/util'
 import request from './request'
 import Config from '@/core/config'
 
@@ -18,7 +19,7 @@ const $http = new request({
   defaultUploadUrl: 'upload/image',
   // 设置请求头（如果使用报错跨域问题，可能是content-type请求类型和后台那边设置的不一致）
   header: {
-    'content-type': 'application/json;charset=utf-8'
+    'Content-Type': 'application/json;charset=utf-8'
   },
   // 请求超时时间, 单位ms（默认15000）
   timeout: 15000,
@@ -71,6 +72,10 @@ $http.requestStart = options => {
   // #ifdef H5
   options.header['domain'] = window.location.hostname
   // #endif
+  // 剔除data中为null的属性 (解决传参字符串'null'的问题)
+  if (hasOwnProperty(options, 'data') && !isEmptyObject(options.data)) {
+    options.data = filterNull(options.data)
+  }
   // return false 表示请求拦截，不会继续请求
   return options
 }

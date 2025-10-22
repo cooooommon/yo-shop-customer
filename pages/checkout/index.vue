@@ -370,7 +370,7 @@
         this.getOrderData()
       },
 
-      // 显示积分说明
+      // 显示积分抵扣说明
       handleShowPoints() {
         this.showPoints = true
       },
