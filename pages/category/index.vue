@@ -14,7 +14,7 @@
     <secondary v-if="setting.style == PageCategoryStyleEnum.TWO_LEVEL.value" :list="list" />
 
     <!-- 分类+商品 -->
-    <commodity v-if="setting.style == PageCategoryStyleEnum.COMMODITY.value" :list="list" :setting="setting" :query="query" />
+    <commodity v-if="setting.style == PageCategoryStyleEnum.COMMODITY.value" ref="mescrollItem" :list="list" :setting="setting" :query="query" />
 
   </view>
 </template>
