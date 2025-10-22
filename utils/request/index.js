@@ -67,6 +67,10 @@ $http.requestStart = options => {
   options.header['platform'] = store.getters.platform
   // 请求前加入Token
   options.header['Access-Token'] = store.getters.token
+  // 请求前加入domain (仅H5端)
+  // #ifdef H5
+  options.header['domain'] = window.location.hostname
+  // #endif
   // return false 表示请求拦截，不会继续请求
   return options
 }
