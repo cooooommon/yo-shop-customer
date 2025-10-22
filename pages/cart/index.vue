@@ -74,7 +74,8 @@
           <!-- dev:下面的disabled条件使用checkedIds.join方式判断 -->
           <!-- dev:通常情况下vue项目使用checkedIds.length更合理, 但是length属性在微信小程序中不起作用 -->
           <view v-if="mode == 'normal'" class="btn-item btn-main" :class="{ disabled: checkedIds.join() == '' }" @click="handleOrder()">
-            <text>去结算 {{ checkedIds.length > 0 ? `(${total})` : '' }}</text>
+            <text>去结算</text>
+            <!-- <text>去结算 {{ checkedIds.length > 0 ? `(${total})` : '' }}</text> -->
           </view>
           <view v-if="mode == 'edit'" class="btn-item btn-main" :class="{ disabled: !checkedIds.length }" @click="handleDelete()">
             <text>删除</text>
