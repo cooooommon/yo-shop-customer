@@ -342,6 +342,16 @@
 	};
 </script>
 
+<style lang="scss">
+  // fix: 在scoped中定义滚动条无效
+  // ::-webkit-scrollbar {
+  //   display: none;
+  //   width: 0 !important;
+  //   height: 0 !important;
+  //   -webkit-appearance: none;
+  //   background: transparent;
+  // }
+</style>
 <style lang="scss" scoped>
 	@import "../../libs/css/style.components.scss";
 
