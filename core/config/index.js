@@ -7,7 +7,7 @@ const options = Object.assign({}, defaultConfig, config)
 /**
  * 配置文件工具类
  * @module Config
- * mix: 如需在项目中获取配置项, 请使用本工具类的方法, 不要直接import根目录的config.js
+ * fix: 如需在项目中获取配置项, 请使用本工具类的方法, 不要直接import根目录的config.js
  */
 export default {
 

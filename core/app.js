@@ -233,7 +233,7 @@ export const getSceneData = query => {
 
 /**
  * 验证指定的功能模块是否开启
- * mix: 免费版暂无该功能
+ * fix: 免费版暂无该功能
  */
 export const checkModuleKey = moduleKey => {
   return true
