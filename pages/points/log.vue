@@ -1,7 +1,6 @@
 <template>
-  <view class="container">
-    <mescroll-body ref="mescrollRef" :sticky="true" @init="mescrollInit" :down="{ use: false }" :up="upOption"
-      @up="upCallback">
+  <view class="container" :style="appThemeStyle">
+    <mescroll-body ref="mescrollRef" :sticky="true" @init="mescrollInit" :down="{ use: false }" :up="upOption" @up="upCallback">
       <view class="log-list">
         <view v-for="(item, index) in list.data" :key="index" class="log-item">
           <view class="item-left flex-box">
@@ -12,7 +11,7 @@
               <text>{{ item.create_time }}</text>
             </view>
           </view>
-          <view class="item-right" :class="[item.value > 0 ? 'col-green' : 'col-6']">
+          <view class="item-right col-m">
             <text>{{ item.value > 0 ? '+' : '' }}{{ item.value }}</text>
           </view>
         </view>
