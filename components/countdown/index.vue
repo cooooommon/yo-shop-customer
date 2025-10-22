@@ -6,8 +6,8 @@
         <text class="separator">{{ separatorText.day }}</text>
       </block> -->
       <block v-if="dynamic.day > 0">
-        <text class="dynamic-value">{{ dynamic.day }}</text>
-        <text class="separator">{{ separatorText.day }}</text>
+        <text class="dynamic-value" :style="{ backgroundColor: customNumBgColor, color: customNumColor }">{{ dynamic.day }}</text>
+        <text class="separator day">{{ separatorText.day }}</text>
       </block>
       <text class="dynamic-value" :style="{ backgroundColor: customNumBgColor, color: customNumColor }">{{ dynamic.hou }}</text>
       <text class="separator">{{ separatorText.hou }}</text>
@@ -88,7 +88,7 @@
       setSeparatorText() {
         const sText = this.separatorText;
         if (this.separator === 'colon') {
-          sText.day = ':'
+          sText.day = '天'
           sText.hou = sText.min = ':'
           sText.sec = ''
         }
@@ -188,7 +188,11 @@
     }
 
     .separator {
-      padding: 0 6rpx;
+      padding: 0 10rpx;
+
+      &.day {
+        padding: 0 8rpx;
+      }
     }
   }
 </style>
