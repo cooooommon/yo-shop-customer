@@ -1,7 +1,7 @@
 {
     "id": "mp-html",
     "displayName": "mp-html 富文本组件【全端支持，支持编辑、latex等扩展】",
-    "version": "v2.4.1",
+    "version": "v2.5.1",
     "description": "一个强大的富文本组件，高效轻量，功能丰富",
     "keywords": [
         "富文本",
@@ -35,12 +35,15 @@
         "platforms": {
             "cloud": {
                 "tcb": "y",
-                "aliyun": "y"
+                "aliyun": "y",
+                "alipay": "n"
             },
             "client": {
                 "App": {
                     "app-vue": "y",
-                    "app-nvue": "y"
+                    "app-nvue": "y",
+                    "app-harmony": "u",
+                    "app-uvue": "u"
                 },
                 "H5-mobile": {
                     "Safari": "y",
