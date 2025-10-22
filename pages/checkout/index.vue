@@ -452,7 +452,7 @@
             }
           })
           .catch(res => app.showToast(res.errMsg, 3000))
-          .finally(() => setTimeout(() => app.disabled = false, 800))
+          .finally(() => setTimeout(() => app.disabled = false, 1600))
       },
 
       // 表单提交的数据
