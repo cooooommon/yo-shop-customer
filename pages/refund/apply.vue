@@ -54,7 +54,7 @@
         <!-- 图片列表 -->
         <view class="image-preview" v-for="(image, imageIndex) in imageList" :key="imageIndex">
           <text class="image-delete iconfont icon-shanchu" @click="deleteImage(imageIndex)"></text>
-          <image class="image" mode="aspectFill" :src="image.path"></image>
+          <image class="image" mode="aspectFill" :src="image.path || image.tempFilePath"></image>
         </view>
         <!-- 上传图片 -->
         <view v-if="imageList.length < maxImageLength" class="image-picker" @click="chooseImage()">
@@ -142,6 +142,7 @@
         const app = this
         const oldImageList = app.imageList
         // 选择图片
+        // #ifndef MP-WEIXIN
         uni.chooseImage({
           count: maxImageLength - oldImageList.length,
           sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -149,8 +150,27 @@
           success({ tempFiles }) {
             // tempFiles = [{path:'xxx', size:100}]
             app.imageList = oldImageList.concat(tempFiles)
+          },
+          fail(err) {
+            console.log('chooseImage fail', err)
           }
-        });
+        })
+        // #endif
+        // #ifdef MP-WEIXIN
+        uni.chooseMedia({
+          count: maxImageLength - oldImageList.length,
+          mediaType: ['image'],
+          sourceType: ['album', 'camera'],
+          sizeType: ['original', 'compressed'],
+          success({ tempFiles }) {
+            // tempFiles = [{tempFilePath:'xxx', size:100}]
+            app.imageList = oldImageList.concat(tempFiles)
+          },
+          fail(err) {
+            console.log('chooseMedia fail', err)
+          }
+        })
+        // #endif
       },
 
       // 删除图片
@@ -227,8 +247,8 @@
 <style lang="scss" scoped>
   .container {
     // 设置ios刘海屏底部横线安全区域
-    padding-bottom: calc(constant(safe-area-inset-bottom) + 140rpx);
-    padding-bottom: calc(env(safe-area-inset-bottom) + 140rpx);
+    padding-bottom: calc(constant(safe-area-inset-bottom) + 180rpx);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 180rpx);
   }
 
   .row-title {
