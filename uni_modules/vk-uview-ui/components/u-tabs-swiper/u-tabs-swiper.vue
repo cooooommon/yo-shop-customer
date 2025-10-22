@@ -19,7 +19,7 @@
 <script>
 	import colorGradient from '../../libs/function/colorGradient';
 	let color = colorGradient;
-	const { windowWidth } = uni.getSystemInfoSync();
+	const { windowWidth } = uni.getWindowInfo();
 	const preId = 'UEl_';
 
 	/**

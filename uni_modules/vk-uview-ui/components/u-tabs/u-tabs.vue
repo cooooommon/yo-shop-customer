@@ -345,10 +345,11 @@
 <style lang="scss" scoped>
 	@import "../../libs/css/style.components.scss";
 
-	view,
-	scroll-view {
-		box-sizing: border-box;
-	}
+	// mix: 报错 组件中不允许使用标签名选择器
+	// view,
+	// scroll-view {
+	// 	box-sizing: border-box;
+	// }
 
 	/* #ifndef APP-NVUE */
 	::-webkit-scrollbar,

@@ -320,12 +320,12 @@
 			vm.$emit('init', vm.mescroll);
 
 			// 设置高度
-			const sys = uni.getSystemInfoSync();
-			if (sys.windowHeight) vm.windowHeight = sys.windowHeight;
-			if (sys.windowBottom) vm.windowBottom = sys.windowBottom;
-			if (sys.statusBarHeight) vm.statusBarHeight = sys.statusBarHeight;
+			const winInfo = uni.getWindowInfo();
+			if (winInfo.windowHeight) vm.windowHeight = winInfo.windowHeight;
+			if (winInfo.windowBottom) vm.windowBottom = winInfo.windowBottom;
+			if (winInfo.statusBarHeight) vm.statusBarHeight = winInfo.statusBarHeight;
 			// 使down的bottomOffset生效
-			vm.mescroll.setBodyHeight(sys.windowHeight);
+			vm.mescroll.setBodyHeight(winInfo.windowHeight);
 
 			// 因为使用的是page的scroll,这里需自定义scrollTo
 			vm.mescroll.resetScrollTo((y, t) => {
