@@ -232,3 +232,22 @@ export const rpx2px = (num) => {
 export const formatToLine = value => {
   return value.replace(/([A-Z])/g, '-$1').toLowerCase()
 }
+
+/**
+ * 递归过滤对象中的null
+ * @param {*} object 源对象
+ */
+export const filterNull = object => {
+  if (object === null || typeof object !== 'object') {
+    return object
+  }
+  // if (Array.isArray(object)) {
+  //   return object.filter(item => item !== null).map(filterNull)
+  // }
+  return Object.keys(object).reduce((acc, key) => {
+    if (object[key] !== null && object[key] !== undefined) {
+      acc[key] = filterNull(object[key])
+    }
+    return acc
+  }, {})
+}
