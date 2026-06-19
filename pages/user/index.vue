@@ -169,7 +169,8 @@
    * id: 标识; name: 标题名称; icon: 图标; type 类型(link和button); url: 跳转的链接
    */
   const service = [
-    { id: 'address', name: '收货地址', icon: 'shouhuodizhi', type: 'link', url: 'pages/address/index' },
+    { id: 'address', name: '我的地址', icon: 'shouhuodizhi', type: 'link', url: 'pages/address/index' },
+    { id: 'booking', name: '我的预约', icon: 'yuyue', type: 'link', url: 'pages/booking/index' },
     { id: 'coupon', name: '领券中心', icon: 'lingquan', type: 'link', url: 'pages/coupon/index', moduleKey: 'market-coupon' },
     { id: 'myCoupon', name: '优惠券', icon: 'youhuiquan', type: 'link', url: 'pages/my-coupon/index', moduleKey: 'market-coupon' },
     { id: 'refund', name: '退换/售后', icon: 'shouhou', type: 'link', url: 'pages/refund/index', count: 0 },
